@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{monster.img.url}}" width="500" height="500"><br>
+                {% if user.is_authenticated %}
+                    {% if user.id == monster.author.id  %}
+                        <a href="{% url 'finalapp:update2' monster.id  %}"class="btn btn-warning">UPDATE</a>
+                        <a href="{% url 'finalapp:delete2' monster.id  %}"class="btn btn-danger">DELETE</a>
+                    {% endif %}
+                {% endif %}
+            <a href="{% url 'finalapp:irfanweb'   %}" class="btn btn-primary">HOME</a>
+            <a href="{% url 'finalapp:review2' monster.id %}" class="btn btn-success">REVIEW</a>
+            <a href="{{dcc.url}}" CLASS="btn btn-danger">GO PAGE</a>
+
+        </div>
+<div class="col-md-6">
+  <h5> <b>{{dcc.name}}</b></h5>
+    <i style="color:white;">{{monster.desc}}</i><br>
+    <h5>Cast:</h5>
+   <i style="color:white;">{{monster.cast}}</i> <br>
+    <h5>Release Date:</h5>
+    <i style="color:white;">{{monster.year}}</i><br>
+
+    <h5>Review:</h5>
+   <i style="color:white;" >{{monster.category}}</i>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+{% endblock %}

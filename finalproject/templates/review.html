@@ -1,0 +1,44 @@
+    {% extends 'base.html' %}
+    {% block content %}
+    <center><a href="{% url 'finalapp:irfanweb'  %}" class="btn btn-success">GO BACK</a> </center>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post">
+        {% csrf_token %}
+            <input type="range" name="rating" placeholder="/10"><br>
+            <textarea name="review" placeholder="Write your review Review"  rows="4" cols="50" id="review-text" required></textarea>
+            <br>
+            <input type="submit">
+
+
+    </form>
+
+            </div>
+            <div class="col-md-6">
+                <i>REVIEWS</i><br>
+
+                <div class="card">
+      <div class="card-body">
+          {% for i in reviews %}
+            USERNAME:{{i.author}}<br>
+            REVIEW: {{i.review}}<br>
+            RATING:{{i.rating}}<br>
+          <br>
+          {% endfor %}
+          <br>
+      </div>
+              <br>
+    </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    {% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--<i><b>Current User: {{user.id}}</b></i><br>-->
+<!--<i><b>post user: {{movie.author.id}}</b></i><br>-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{movie.img.url}}" width="500" height="500"><br>
+                {% if user.is_authenticated %}
+                    {% if user.id == movie.author.id  %}
+                        <a href="{% url 'finalapp:update3' movie.id  %}" class="btn btn-warning">UPDATE</a>
+                         <a href="{% url 'finalapp:delete1' movie.id  %}" class="btn btn-danger">DELETE</a>
+                    {% endif %}
+
+                <a href="{% url 'finalapp:irfanweb'   %}" class="btn btn-primary">HOME</a>
+                <a href="{{movie.url}}" CLASS="btn btn-danger">GO PAGE</a>
+                 <a href="{% url 'finalapp:review' movie.id %}" class="btn btn-success">REVIEW</a>
+
+                {% endif %}
+
+
+
+
+
+
+
+
+        </div>
+
+
+<div class="col-md-6">
+  <h5> <b>{{movie.name}}</b></h5>
+    <i style="color:white;">{{movie.desc}}</i><br>
+    <h5>Cast:</h5>
+   <i style="color:white;">{{movie.cast}}</i> <br>
+    <h5>Release Date:</h5>
+    <i style="color:white;">{{movie.year}}</i><br>
+
+    <h5>Review:</h5>
+   <i style="color:white;" >{{movie.category}}</i><br>
+
+
+
+
+
+</div>
+
+
+
+    </div>
+</div>
+{% endblock %}
